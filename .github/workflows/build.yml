@@ -13,8 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: install compiler
-      run: rustup target add aarch64-linux-android
+    - name: install dependencies
+      run: |
+        rustup target add aarch64-linux-android
+        apt-get install protobuf-compiler
+    
     - name: compile
       run: |
         export CXX=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang++
