@@ -16,7 +16,7 @@ jobs:
     - name: install dependencies
       run: |
         rustup target add aarch64-linux-android
-        apt-get install protobuf-compiler
+        sudo apt-get install -y protobuf-compiler
     
     - name: compile
       run: |
