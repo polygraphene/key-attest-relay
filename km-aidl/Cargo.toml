@@ -1,0 +1,18 @@
+[package]
+name = "km-aidl"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+binder = { package = "android-binder", path = "../binder" }
+async-trait = "0.1"
+libc = "0.2"
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = ["cfg(android_vendor)", "cfg(android_ndk)", "cfg(android_vndk)", "cfg(trusty)"]
+
+[lints.rust]
+unused_imports = "allow"
+unused_mut = "allow"
+deprecated = "allow"

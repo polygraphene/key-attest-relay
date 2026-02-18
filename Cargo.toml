@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    "injector",
+    "libkarelay",
+    "binder",
+    "server",
+    "km-aidl",
+    "common",
+]
+resolver = "2"

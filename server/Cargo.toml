@@ -1,0 +1,28 @@
+[package]
+name = "ka-server"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+
+[[bin]]
+name = "ka-server"
+path = "src/main.rs"
+
+[dependencies]
+cxx = "1.0.194"
+libc = "0.2.180"
+tonic = { version = "0.14", features = ["tls-aws-lc"] }
+prost = "0.14"
+tonic-prost = "*"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+rand = "0.10.0"
+km-aidl = { path = "../km-aidl" }
+binder = { package = "android-binder", path = "../binder" }
+url = "2.5.8"
+base64 = "0.22.1"
+ka-common = { path = "../common" }
+rustls = "*"
+
+[build-dependencies]
+tonic-prost-build = "*"
+cxx-build = "1.0"

@@ -1,0 +1,27 @@
+[package]
+name = "ka-common"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+
+[dependencies]
+libc = "0.2"
+binder = { package = "android-binder", path = "../binder" }
+async-trait = "0.1"
+km-aidl = { path = "../km-aidl" }
+tonic = { version = "0.14", features = ["tls-aws-lc"] }
+prost = "0.14"
+tonic-prost = "*"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+cxx = "1.0.194"
+rand = "0.10.0"
+rustls = "*"
+tower = "*"
+hyper-util = "*"
+hyper-rustls = { version = "*", features = ["http2", "tls12"] }
+sha2 = "0.10.9"
+hyper = "*"
+
+[lints.rust.unexpected_cfgs]
+level = "warn"
+check-cfg = ["cfg(android_vendor)", "cfg(android_ndk)", "cfg(android_vndk)", "cfg(trusty)"]
