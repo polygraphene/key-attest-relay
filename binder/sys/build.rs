@@ -34,6 +34,7 @@ fn main() {
         .clang_arg("-I")
         .clang_arg(ndk_home.join("toolchains/llvm/prebuilt/linux-x86_64/lib/clang/18/include").display().to_string())
         .clang_arg("-DANDROID_PLATFORM")
+        .clang_arg("-nostdinc")
         // TODO figure out what the "standard" #define is and use that instead
         .header("BinderBindings.hpp")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))

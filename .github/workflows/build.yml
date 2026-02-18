@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: compile
+      run: |
+        export CXX=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang++
+        export CC=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang
+        export AR=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
+        export LD=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang
+        export LIBCLANG_PATH=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/musl/lib
+        export AOSP_SOURCE=$PWD/aosp
+        cargo build --release --target aarch64-linux-android --config target.aarch64-linux-android.linker=\"$LD\"
+        zip key-attest-relay.zip target/aarch64-linux-android/release/ka-injector target/aarch64-linux-android/release/ka-server target/aarch64-linux-android/release/libkarelay.so
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v6.0.0
+      with:
+        name: key-attest-relay
+        path: key-attest-relay.zip
