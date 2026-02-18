@@ -108,6 +108,7 @@ Now attestation requests are hooked. Test them with [Android Key Attestation Tes
 
 ## Acknowledgement
 
+- [KeyAttestation](https://github.com/vvb2060/KeyAttestation)
 - [TrickyStore](https://github.com/5ec1cff/TrickyStore)
 - [Tricky Store OSS](https://github.com/beakthoven/TrickyStoreOSS)
 - [TEESimulator](https://github.com/JingMatrix/TEESimulator)
