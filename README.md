@@ -105,6 +105,7 @@ Now attestation requests are hooked. Test them with [Android Key Attestation Tes
 ## Note
 
 1. Both client and server devices have to be rooted. Exploiting a kernel vulnerability or similar on server devices is required to spoof the unlock status.
+2. It is highly likely that the attestation key (keybox) on your server device will be revoked. Your device will lose valid attestation permanently. Use with caution.
 
 ## Acknowledgement
 
